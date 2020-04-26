@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Calibration Images
+Pansharpening/Images/
+
+# README ipynb template
+# README.ipynb
