@@ -1,0 +1,9 @@
+pywt
+matplotlib
+pandas
+jupyter
+notebook
+opencv
+pywavelets
+scikit-learns
+searborn

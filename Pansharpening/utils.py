@@ -70,7 +70,7 @@ def enhance(img, brightness, contrast):
     
     return img
     
-def plot(imgs, subplots_shape, figsize1=30, figsize2=30, brightness=0, contrast=0, colorbar=False, titles=None):
+def plot(imgs, subplots_shape, figsize1=30, figsize2=30, brightness=0, contrast=0, colorbar=False, titles=None, save=None):
     """Multipurpose image plotting framework. Expects an image of a list of images as input (following the cv2 style: BGR, [y coordinates, x coordinates, bands]).
     In case a list of images is provided, all images will be displayed on subplots.
 
@@ -91,6 +91,8 @@ def plot(imgs, subplots_shape, figsize1=30, figsize2=30, brightness=0, contrast=
             If True a colorbar will be displayed   
         titles: list
             list of a size equal to the size of 'img'. Respective 'titles' will be displayed on top of the plots
+        save: string
+            if not None, saves the plot to the save filename in jpg format
     """
     
     # In case single image, convert to list
@@ -102,7 +104,7 @@ def plot(imgs, subplots_shape, figsize1=30, figsize2=30, brightness=0, contrast=
         subplots_shape = [1, len(imgs)]
 
     # Initiating subplots
-    fig,axes  = plt.subplots(nrows = subplots_shape[0], 
+    fig, axes  = plt.subplots(nrows = subplots_shape[0], 
                              ncols = subplots_shape[1], 
                              figsize=(figsize1,figsize2), 
                              squeeze=True)
@@ -131,7 +133,15 @@ def plot(imgs, subplots_shape, figsize1=30, figsize2=30, brightness=0, contrast=
 
             i+=1
 
-    plt.show()   
+    plt.show()
+
+    if save:
+        fig.savefig(
+            save,
+            bbox_inches='tight', 
+            transparent=True,
+            pad_inches=0.1
+            )
     
     
 def plus(a, b):
